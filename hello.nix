@@ -1,6 +1,6 @@
 { stdenv, fetchzip }:
 stdenv.mkDerivation {
-  name = "hello";
+  pname = "hello";
   version = "2.12.1";
 
   src = fetchzip {
