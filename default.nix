@@ -1,11 +1,9 @@
 let
-  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-24.05";
-  pkgs = import nixpkgs {
-    config = { };
-    overlays = [ ];
-  };
+  pkgs = import <nixpkgs> { };
 in
-{
-  hello = pkgs.callPackage ./hello.nix { };
-  icat = pkgs.callPackage ./icat.nix { };
+rec {
+  hello = pkgs.callPackage ./hello.nix { audience = "Rustaceans"; };
+  hello-folks = hello.override {
+    audience = "folks";
+  };
 }
